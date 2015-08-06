@@ -1,17 +1,17 @@
 /*
-		 Title: Lobby.java
+		 Title: LobbyOutComm.java
 		 Programmer: hugo
 		 Date of creation: Aug 6, 2015
 		 Description: 
 */
 
 
-package server;
+package lobby;
 
 /**
  * @author hugo
  *
  */
-public class Lobby {
+public class LobbyOutComm {
 
 }
