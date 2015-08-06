@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import server.Logging;
+import sharedPackages.ActionRequest;
 
 /**
  * @author hugo
