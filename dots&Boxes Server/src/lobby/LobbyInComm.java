@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
+import sharedPackages.ActionRequest;
+
 /**
  * @author hugo
  *
@@ -29,12 +31,21 @@ public class LobbyInComm extends Thread {
 	public void run(){
 		try {
 			csStream = new ObjectInputStream(csSock.getInputStream());
+			ActionRequest actionRequest;
 			while(player.StayAlive){
-				
+				actionRequest = (ActionRequest) csStream.readObject();
+				if(actionRequest.getAction() == ActionRequest.CS_CONNECT){
+					
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Lobby.logger.writeToLog("Could not find input stream of socket");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Lobby.logger.writeToLog("Sent a non action request through the stream, stupid");
 		}
 	}
 	
