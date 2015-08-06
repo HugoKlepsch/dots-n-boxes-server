@@ -8,10 +8,19 @@
 
 package server;
 
+import lobby.Player;
+
 /**
  * @author hugo
  *
  */
-public class PlayerGameComms {
+public class PlayerGameComms extends Thread {
+	Player player;
+
+	public PlayerGameComms(Player player) {
+		this.player = player;
+	}
+	
+	
 
 }
