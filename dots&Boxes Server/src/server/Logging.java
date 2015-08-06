@@ -49,9 +49,9 @@ public class Logging {
 	 */
 	public void writeToLog(String message){
 		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		fileOut.println(timeStamp + message);
+		fileOut.println(timeStamp + " --- " +  message);
 		if (printToStdOutAswell) {
-			System.out.println(timeStamp + message);
+			System.out.println(timeStamp + " --- " + message);
 		}
 	}
 	
