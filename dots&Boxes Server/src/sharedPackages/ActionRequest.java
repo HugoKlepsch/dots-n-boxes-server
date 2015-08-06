@@ -33,6 +33,7 @@ public class ActionRequest implements Serializable {
 	public static final int CS_USERLIST = 7;
 	//send user list
 	public static final int SC_USERLIST = 8;
+	public static final int CS_CREATE_ACCOUNT = 9;
 	
 	private int action;
 	private User user;
