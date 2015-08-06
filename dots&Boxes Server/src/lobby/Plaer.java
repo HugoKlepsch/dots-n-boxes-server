@@ -6,7 +6,7 @@
 */
 
 
-package server;
+package lobby;
 
 /**
  * @author hugo
