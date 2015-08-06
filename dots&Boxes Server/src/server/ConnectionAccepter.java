@@ -12,6 +12,15 @@ package server;
  * @author hugo
  *
  */
-public class ConnectionAccepter {
-
+public class ConnectionAccepter extends Thread{
+	
+	
+	public ConnectionAccepter(){
+		
+	}
+	
+	public void run(){
+		
+	}
+	
 }
