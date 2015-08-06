@@ -22,8 +22,9 @@ public class Lobby {
 	public static Vector<Player> players = new Vector<Player>(); 
 	
 	public static void main(String[] args) {
-		new ConnectionAccepter().start();
 		logger = new Logging("dots_n_boxes_log.txt", true);
+		new ConnectionAccepter().start();
+		
 		
 	}
 	

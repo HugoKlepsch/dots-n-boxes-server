@@ -11,6 +11,7 @@ package server;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 
 /**
  * @author hugo
@@ -46,9 +47,10 @@ public class Logging {
 		 * @Description: Adds the given message to the server log, and alternatively also to the stdout
 	 */
 	public void writeToLog(String message){
-		fileOut.println(message);
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		fileOut.println(timeStamp + message);
 		if (printToStdOutAswell) {
-			System.out.println(message);
+			System.out.println(timeStamp + message);
 		}
 	}
 	
