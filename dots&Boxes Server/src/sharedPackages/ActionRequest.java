@@ -20,9 +20,15 @@ public class ActionRequest implements Serializable {
 	public static final int CS_CONNECT = 0;
 	
 	private int action;
+	private User user;
 	
 	public ActionRequest(int action){
-		this.setAction(action);
+		setAction(action);
+	}
+	
+	public ActionRequest(int action, User user){
+		setAction(action);
+		setUser(user);
 	}
 
 	public int getAction() {
@@ -31,6 +37,14 @@ public class ActionRequest implements Serializable {
 
 	public void setAction(int action) {
 		this.action = action;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

@@ -35,15 +35,13 @@ public class LobbyInComm extends Thread {
 			while(player.StayAlive){
 				actionRequest = (ActionRequest) csStream.readObject();
 				if(actionRequest.getAction() == ActionRequest.CS_CONNECT){
-					
+					player.setUser(actionRequest.getUser());
 				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			Lobby.logger.writeToLog("Could not find input stream of socket");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			Lobby.logger.writeToLog("Sent a non action request through the stream, stupid");
 		}
