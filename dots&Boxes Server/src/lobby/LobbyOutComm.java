@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import server.Logging;
+
 /**
  * @author hugo
  *
@@ -35,6 +37,7 @@ public class LobbyOutComm extends Thread{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Lobby.logger.writeToLog("Could not find output stream of socket");
 		}
 	}
 
