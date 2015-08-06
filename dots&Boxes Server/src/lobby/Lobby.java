@@ -24,7 +24,7 @@ public class Lobby {
 		
 	}
 	
-	public void addPlayer(Player player){
+	public static void addPlayer(Player player){
 		players.addElement(player);
 	}
 
