@@ -8,10 +8,17 @@
 
 package lobby;
 
+import java.net.Socket;
+
 /**
  * @author hugo
  *
  */
 public class Player {
+	private Socket socket;
+	
+	public Player(Socket socket){
+		this.socket = socket;
+	}
 
 }
