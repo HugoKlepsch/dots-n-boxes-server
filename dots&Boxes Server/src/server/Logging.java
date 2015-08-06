@@ -18,8 +18,8 @@ import java.io.PrintWriter;
  *
  */
 public class Logging {
-	private static PrintWriter fileOut;
-	private static boolean printToStdOutAswell;
+	private PrintWriter fileOut;
+	private boolean printToStdOutAswell;
 	public Logging(String filename, boolean printToStdOutAswell){
 		this.printToStdOutAswell = printToStdOutAswell;
 		try {
@@ -31,7 +31,7 @@ public class Logging {
 		}
 	}
 	
-	public static void writeToLog(String message){
+	public void writeToLog(String message){
 		fileOut.println(message);
 		if (printToStdOutAswell) {
 			System.out.println(message);
