@@ -15,10 +15,15 @@ import java.net.Socket;
  *
  */
 public class Player {
-	private Socket socket;
+	public boolean StayAlive;
+	private LobbyInComm inComm;
+	private LobbyOutComm outComm;
 	
 	public Player(Socket socket){
-		this.socket = socket;
+		StayAlive = true;
+		inComm = new LobbyInComm(socket, this);
+		outComm = new LobbyOutComm(socket, this);
+		
 	}
 
 }
