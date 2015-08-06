@@ -12,6 +12,6 @@ package lobby;
  * @author hugo
  *
  */
-public class Plaer {
+public class Player {
 
 }
