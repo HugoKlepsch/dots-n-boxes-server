@@ -19,7 +19,9 @@ import java.io.PrintWriter;
  */
 public class Logging {
 	private static PrintWriter fileOut;
-	public Logging(String filename){
+	private static boolean printToStdOutAswell;
+	public Logging(String filename, boolean printToStdOutAswell){
+		this.printToStdOutAswell = printToStdOutAswell;
 		try {
 			fileOut = new PrintWriter(new FileWriter(filename));
 		} catch (IOException e) {
@@ -31,6 +33,9 @@ public class Logging {
 	
 	public static void writeToLog(String message){
 		fileOut.println(message);
+		if (printToStdOutAswell) {
+			System.out.println(message);
+		}
 	}
 	
 }
