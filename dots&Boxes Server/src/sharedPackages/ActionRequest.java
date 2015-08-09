@@ -9,6 +9,7 @@
 package sharedPackages;
 
 import java.io.Serializable;
+import java.util.Vector;
 
 /**
  * @author hugo
@@ -37,11 +38,17 @@ public class ActionRequest implements Serializable {
 	
 	private int action;
 	private User user;
+	private Vector<User> userList;
 	
 	public ActionRequest(int action){
-		setAction(action);
+		this.action = action;
 	}
 	
+	public ActionRequest(int action, Vector<User> userList) {
+		this.action = action;
+		this.userList = userList;
+	}
+
 	public ActionRequest(int action, User user){
 		setAction(action);
 		setUser(user);
@@ -62,5 +69,14 @@ public class ActionRequest implements Serializable {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Vector<User> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(Vector<User> userList) {
+		this.userList = userList;
+	}
+	
 
 }
