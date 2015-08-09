@@ -70,8 +70,10 @@ public class Lobby {
 					}
 					if (tempPlayers.elementAt(i).hasSetUser()) {
 						if (this.checkPlayerSignOn(tempPlayers.elementAt(i).getUser()) == true) {
-							Lobby.players.addElement(tempPlayers.remove(i));
+							Lobby.addPlayer(tempPlayers.remove(i));
 							break;
+						} else {
+							//TODO kill the player
 						}
 					}
 				}
