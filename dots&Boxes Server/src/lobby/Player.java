@@ -21,6 +21,7 @@ public class Player {
 	private LobbyInComm inComm;
 	private LobbyOutComm outComm;
 	private User user;
+	private boolean hasSetUser = false;
 	
 	public Player(Socket socket){
 		StayAlive = true;
@@ -35,8 +36,12 @@ public class Player {
 
 	public void setUser(User user) {
 		this.user = user;
+		hasSetUser = true;
 	}
 	
+	public boolean hasSetUser(){
+		return hasSetUser;
+	}
 	
 
 }

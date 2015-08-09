@@ -31,6 +31,7 @@ public class ConnectionAccepter extends Thread{
 			System.out.println(getSelfIP());
 			ServerSocket serverSocket = new ServerSocket();
 			while(true){
+				
 				Lobby.addPlayer(new Player(serverSocket.accept()));
 			}
 		} catch (IOException e) {

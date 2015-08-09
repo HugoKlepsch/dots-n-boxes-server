@@ -20,6 +20,7 @@ import sharedPackages.User;
  */
 public class Lobby {
 	public static Logging logger;
+	public static Vector<Player> tempPlayers = new Vector<Player>();
 	public static Vector<Player> players = new Vector<Player>(); 
 	
 	public static void main(String[] args) {
@@ -31,7 +32,11 @@ public class Lobby {
 	
 	public static void addPlayer(Player player){
 		
-		players.addElement(player);
+		
+	}
+	
+	public static void addTempPlayer(Player player){
+		tempPlayers.addElement(player);
 	}
 	
 	
@@ -43,8 +48,38 @@ public class Lobby {
 		 * @return: true if valid, false else
 		 * @Description: ( ͡° ͜ʖ ͡°)
 	 */
-	private boolean checkPlayerSignOn(User user){
+	public static boolean checkPlayerSignOn(User user){
 		return true;
 	}
 
+	class tempPlayerManager extends Thread{
+		
+		
+		public tempPlayerManager(){
+			
+		}
+		
+		public void run(){
+			while(true){
+				for (int i = 0; i < tempPlayers.size(); i++) {
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					if (tempPlayers.elementAt(i).hasSetUser()) {
+						if (this.checkPlayerSignOn(tempPlayers.elementAt(i).getUser()) == true) {
+							Lobby.players.addElement(tempPlayers.remove(i));
+							break;
+						}
+					}
+				}
+			}
+		}
+		
+		public boolean checkPlayerSignOn(User user){
+			return true;
+		}
+	}
 }
