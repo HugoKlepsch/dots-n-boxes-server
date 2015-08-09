@@ -1,5 +1,5 @@
 /*
-		 Title: Lobby.java
+--		 Title: Lobby.java
 		 Programmer: hugo
 		 Date of creation: Aug 6, 2015
 		 Description: 
