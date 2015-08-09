@@ -29,7 +29,21 @@ public class Lobby {
 	}
 	
 	public static void addPlayer(Player player){
+		
 		players.addElement(player);
+	}
+	
+	
+	/**
+	 * 
+		 * @author hugo
+		 * Date of creation: Aug 9, 2015 
+		 * @param: the user credentials
+		 * @return: true if valid, false else
+		 * @Description: ( ͡° ͜ʖ ͡°)
+	 */
+	private boolean checkPlayerSignOn(User user){
+		return true;
 	}
 
 }
