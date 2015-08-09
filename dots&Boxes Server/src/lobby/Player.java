@@ -54,6 +54,18 @@ public class Player extends Thread {
 			Lobby.logger.writeToLog("Sent a non action request through the stream, stupid");
 		}
 	}
+	
+	public void sendActionRequest(ActionRequest actionRequest){
+		try {
+			scStream.writeObject(actionRequest);
+			scStream.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Lobby.logger.writeToLog("Couldn't send action request");
+		}
+		
+	}
 
 	public User getUser() {
 		return user;
