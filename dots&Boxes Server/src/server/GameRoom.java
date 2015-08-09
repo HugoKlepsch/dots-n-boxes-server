@@ -15,12 +15,12 @@ import lobby.Player;
  *
  */
 public class GameRoom extends Thread {
-	PlayerGameComms player1Comms;
-	PlayerGameComms player2Comms;
+	Player player1;
+	Player player2;
 	
 	public GameRoom(Player player1, Player player2){
-		player1Comms = new PlayerGameComms(player1);
-		player2Comms = new PlayerGameComms(player2);
+		this.player1 = player1;
+		this.player2 = player2;
 	}
 
 }
