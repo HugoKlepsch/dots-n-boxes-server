@@ -36,7 +36,7 @@ public class Lobby {
 		player.getUser().wipeCreds();
 		players.addElement(player);
 		userNames.add(player.getUser());
-		player.sendActionRequest(new ActionRequest(ActionRequest.SC_USERLIST, userNames));
+		player.sendUserList();
 		
 	}
 	

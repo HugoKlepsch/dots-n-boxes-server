@@ -42,9 +42,16 @@ public class Player extends Thread {
 			ActionRequest actionRequest;
 			while(StayAlive){
 				actionRequest = (ActionRequest) csStream.readObject();
-				if(actionRequest.getAction() == ActionRequest.CS_CONNECT){
-					setUser(actionRequest.getUser());
+				
+				switch (actionRequest.getAction()){
+				case ActionRequest.CS_CONNECT:
+					this.setUser(actionRequest.getUser());
+					break;
+				case ActionRequest.CS_USERLIST:
+					sendUserList();
+					break;
 				}
+				
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -66,8 +73,13 @@ public class Player extends Thread {
 		}
 		
 	}
+	
+	public void sendUserList(){
+		this.sendActionRequest(new ActionRequest(ActionRequest.SC_USERLIST, Lobby.userNames));
+	}
 
 	public User getUser() {
+		
 		return user;
 	}
 
