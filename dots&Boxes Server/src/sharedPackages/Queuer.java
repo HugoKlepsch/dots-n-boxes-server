@@ -10,10 +10,7 @@ package sharedPackages;
 
 import java.util.Vector;
 
-/**
- * @author hugo
- * @note The value inside the angle brackets <> is the class / datatype of the variable you want to hold in the queue. It should be noted that primitive types like int and float are from the Integer and Float class, use the class name, not int.
- */
+
 public class Queuer <T>{ // T is the datatype that will be passed to the class when making this object.
 	private Vector<T> queue; // A Vector is like an array, but can be extended. (It is not a fixed length.) Notice how
 							 // it is of type "T", the type that is passed when making the object.
