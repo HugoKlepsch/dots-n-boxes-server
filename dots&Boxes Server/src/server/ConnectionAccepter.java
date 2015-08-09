@@ -32,7 +32,7 @@ public class ConnectionAccepter extends Thread{
 			ServerSocket serverSocket = new ServerSocket();
 			while(true){
 				
-				Lobby.addPlayer(new Player(serverSocket.accept()));
+				Lobby.addTempPlayer(new Player(serverSocket.accept()));
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
