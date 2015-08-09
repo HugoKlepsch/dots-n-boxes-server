@@ -8,28 +8,51 @@
 
 package lobby;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import sharedPackages.ActionRequest;
 import sharedPackages.User;
 
 /**
  * @author hugo
  *
  */
-public class Player {
+public class Player extends Thread {
 	public boolean StayAlive;
-	private LobbyInComm inComm;
-	private LobbyOutComm outComm;
 	private User user;
+	private ObjectInputStream csStream;
+	private ObjectOutputStream scStream;
+	private Socket socket;
 	
 	private boolean hasSetUser = false;
 	private int numFailedUserChecks; //incremented when the tempplayerchecker checks the player, and hasSetUser is false;
 	
 	public Player(Socket socket){
 		StayAlive = true;
-		inComm = new LobbyInComm(socket, this);
-		outComm = new LobbyOutComm(socket, this);
 		
+	}
+	
+	public void run(){
+		try {
+			csStream = new ObjectInputStream(socket.getInputStream());
+			scStream = new ObjectOutputStream(socket.getOutputStream());
+			ActionRequest actionRequest;
+			while(StayAlive){
+				actionRequest = (ActionRequest) csStream.readObject();
+				if(actionRequest.getAction() == ActionRequest.CS_CONNECT){
+					setUser(actionRequest.getUser());
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			Lobby.logger.writeToLog("Could not find input stream of socket");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			Lobby.logger.writeToLog("Sent a non action request through the stream, stupid");
+		}
 	}
 
 	public User getUser() {
