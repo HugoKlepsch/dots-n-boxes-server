@@ -40,17 +40,7 @@ public class Lobby {
 	}
 	
 	
-	/**
-	 * 
-		 * @author hugo
-		 * Date of creation: Aug 9, 2015 
-		 * @param: the user credentials
-		 * @return: true if valid, false else
-		 * @Description: ( ͡° ͜ʖ ͡°)
-	 */
-	public static boolean checkPlayerSignOn(User user){
-		return true;
-	}
+	
 
 	class tempPlayerManager extends Thread{
 		
@@ -68,18 +58,31 @@ public class Lobby {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
 					if (tempPlayers.elementAt(i).hasSetUser()) {
 						if (this.checkPlayerSignOn(tempPlayers.elementAt(i).getUser()) == true) {
+							logger.writeToLog("User " + tempPlayers.elementAt(i).getUser().getUsername() + " passed signon check");
 							Lobby.addPlayer(tempPlayers.remove(i));
 							break;
 						} else {
+							logger.writeToLog("User " + tempPlayers.elementAt(i).getUser().getUsername() + " did not pass signon check");
 							//TODO kill the player
 						}
+					} else {
+						logger.writeToLog(tempPlayers.elementAt(i) + "Has failed to provide a user " + tempPlayers.elementAt(i).incrementFailedChecks() + "times");
 					}
 				}
 			}
 		}
 		
+		/**
+		 * 
+			 * @author hugo
+			 * Date of creation: Aug 9, 2015 
+			 * @param: the user credentials
+			 * @return: true if valid, false else
+			 * @Description: ( ͡° ͜ʖ ͡°)
+		 */
 		public boolean checkPlayerSignOn(User user){
 			return true;
 		}

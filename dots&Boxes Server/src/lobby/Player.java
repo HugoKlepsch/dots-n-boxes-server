@@ -21,7 +21,9 @@ public class Player {
 	private LobbyInComm inComm;
 	private LobbyOutComm outComm;
 	private User user;
+	
 	private boolean hasSetUser = false;
+	private int numFailedUserChecks; //incremented when the tempplayerchecker checks the player, and hasSetUser is false;
 	
 	public Player(Socket socket){
 		StayAlive = true;
@@ -41,6 +43,14 @@ public class Player {
 	
 	public boolean hasSetUser(){
 		return hasSetUser;
+	}
+	
+	public int getNumFailedUserChecks(){
+		return numFailedUserChecks;
+	}
+	
+	public int incrementFailedChecks(){
+		return ++ numFailedUserChecks;
 	}
 	
 
