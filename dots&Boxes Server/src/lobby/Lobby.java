@@ -12,6 +12,7 @@ import java.util.Vector;
 
 import server.ConnectionAccepter;
 import server.Logging;
+import sharedPackages.User;
 
 /**
  * @author hugo
