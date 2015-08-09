@@ -47,6 +47,10 @@ public class User {
 		this.password = password;
 	}
 	
+	public void wipeCreds(){
+		this.password = null;
+		this.email = null;
+	}
 	
 
 }
