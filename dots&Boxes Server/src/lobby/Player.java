@@ -44,12 +44,12 @@ public class Player extends Thread {
 				actionRequest = (ActionRequest) csStream.readObject();
 				
 				switch (actionRequest.getAction()){
-				case ActionRequest.CS_CONNECT:
-					this.setUser(actionRequest.getUser());
-					break;
-				case ActionRequest.CS_USERLIST:
-					sendUserList();
-					break;
+					case ActionRequest.CS_CONNECT:
+						this.setUser(actionRequest.getUser());
+						break;
+					case ActionRequest.CS_USERLIST:
+						this.sendUserList();
+						break;
 				}
 				
 			}
