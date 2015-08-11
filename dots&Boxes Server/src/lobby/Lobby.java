@@ -18,16 +18,19 @@ import sharedPackages.User;
  * @author hugo
  *
  */
-public class Lobby {
+public class Lobby extends Thread{
 	public static Logging logger;
 	public static Vector<Player> tempPlayers = new Vector<Player>();
 	public static Vector<Player> players = new Vector<Player>();
 	public static Vector<User> userNames = new Vector<User>();
 
-	public static void main(String[] args) {
+	public void run() {
 		logger = new Logging("dots_n_boxes_log.txt", true);
-		new ConnectionAccepter().start();
+		
 
+	}
+	public Lobby(){
+		
 	}
 
 	public static void addPlayer(Player player) {

@@ -19,21 +19,21 @@ import lobby.Player;
  * @author hugo
  *
  */
-public class ConnectionAccepter extends Thread{
-	public static final int port = 7070;
+public class ConnectionAccepter{
+	public static final int port = 7075;
 	
-	public ConnectionAccepter(){
-		
-	}
 	
-	public void run(){
+	
+	public static void main(String[] args){
 		try {
+			new Lobby().start();
 			System.out.println(getSelfIP());
-			ServerSocket serverSocket = new ServerSocket();
-			while(true){
-				
-				Lobby.addTempPlayer(new Player(serverSocket.accept()));
+			ServerSocket serverSocket = new ServerSocket(port);
+			while(null == null){
+				Socket tempSock = serverSocket.accept();
+				Lobby.addTempPlayer(new Player(tempSock));
 			}
+			serverSocket.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,7 +43,7 @@ public class ConnectionAccepter extends Thread{
 	}
 	
 	private static String getSelfIP() throws IOException {
-		Socket ipTest = new Socket("8.8.8.8", 80); 
+		Socket ipTest = new Socket("www.google.ca", 80); 
 		String selfIP = ipTest.getLocalAddress().getHostAddress(); 
 		ipTest.close(); 
 		return selfIP; 
