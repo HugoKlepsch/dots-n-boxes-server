@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.Arrays;
+import java.util.Vector;
 
 import sharedPackages.ActionRequest;
 import sharedPackages.User;
@@ -50,6 +52,9 @@ public class Player extends Thread {
 					case ActionRequest.CS_USERLIST:
 						this.sendUserList();
 						break;
+					case ActionRequest.CS_CHALLENGE_PLAYER:
+						this.challengePlayer(actionRequest.getUser().getUsername());
+						break;
 				}
 				
 			}
@@ -76,6 +81,16 @@ public class Player extends Thread {
 	
 	public void sendUserList(){
 		this.sendActionRequest(new ActionRequest(ActionRequest.SC_USERLIST, Lobby.userNames));
+	}
+	
+	public void challengePlayer(String username){
+		Vector<String> usernames = new Vector<String>();
+		for(int i = 0; i<Lobby.userNames.size();i++){
+			usernames.add(Lobby.userNames.get(i).getUsername());
+		}
+		Object[] userArray = usernames.toArray();
+		int index = Arrays.binarySearch(userArray, username);
+		Lobby.players.get(index).sendActionRequest(new ActionRequest(ActionRequest.SC_CHALLENGE_PLAYER));;
 	}
 
 	public User getUser() {
