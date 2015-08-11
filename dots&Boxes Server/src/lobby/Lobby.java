@@ -54,7 +54,7 @@ public class Lobby {
 			while(true){
 				int i = 0;
 				boolean keepGoing = true;
-				while(i < tempPlayers.size() && keepGoing)
+				while(i < tempPlayers.size() && keepGoing){
 					try {
 						Thread.sleep(300);
 					} catch (InterruptedException e) {
