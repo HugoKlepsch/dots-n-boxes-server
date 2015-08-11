@@ -3,8 +3,7 @@
 		 Programmer: hugo
 		 Date of creation: Aug 6, 2015
 		 Description: 
-*/
-
+ */
 
 package lobby;
 
@@ -12,7 +11,6 @@ import java.util.Vector;
 
 import server.ConnectionAccepter;
 import server.Logging;
-import sharedPackages.ActionRequest;
 import sharedPackages.User;
 
 /**
@@ -22,38 +20,35 @@ import sharedPackages.User;
 public class Lobby {
 	public static Logging logger;
 	public static Vector<Player> tempPlayers = new Vector<Player>();
-	public static Vector<Player> players = new Vector<Player>(); 
+	public static Vector<Player> players = new Vector<Player>();
 	public static Vector<User> userNames = new Vector<User>();
-	
+
 	public static void main(String[] args) {
 		logger = new Logging("dots_n_boxes_log.txt", true);
 		new ConnectionAccepter().start();
-		
-		
+
 	}
-	
-	public static void addPlayer(Player player){
+
+	public static void addPlayer(Player player) {
 		player.getUser().wipeCreds();
 		players.addElement(player);
 		userNames.add(player.getUser());
 		player.sendUserList();
-		
+
 	}
-	
-	public static void addTempPlayer(Player player){
+
+	public static void addTempPlayer(Player player) {
 		tempPlayers.addElement(player);
 	}
-	
-	
-	
 
-	class tempPlayerManager extends Thread{
+	class tempPlayerManager extends Thread {
 		
-		
-		public tempPlayerManager(){
-			
+		private final int MAX_ATTEMPS = 5;
+
+		public tempPlayerManager() {
+
 		}
-		
+
 		public void run(){
 			while(true){
 				for (int i = 0; i < tempPlayers.size(); i++) {
@@ -75,11 +70,14 @@ public class Lobby {
 						}
 					} else {
 						logger.writeToLog(tempPlayers.elementAt(i) + "Has failed to provide a user " + tempPlayers.elementAt(i).incrementFailedChecks() + "times");
+						if (tempPlayers.elementAt(i).getNumFailedUserChecks() > MAX_ATTEMPS) {
+							//TODO kill the player
+						}
 					}
 				}
 			}
 		}
-		
+
 		/**
 		 * 
 			 * @author hugo
@@ -88,7 +86,7 @@ public class Lobby {
 			 * @return: true if valid, false else
 			 * @Description: ( ͡° ͜ʖ ͡°)
 		 */
-		public boolean checkPlayerSignOn(User user){
+		public boolean checkPlayerSignOn(User user) {
 			return true;
 		}
 	}
