@@ -11,6 +11,7 @@ import java.util.Vector;
 
 import server.ConnectionAccepter;
 import server.Logging;
+import sharedPackages.ActionRequest;
 import sharedPackages.User;
 
 /**
@@ -51,7 +52,9 @@ public class Lobby {
 
 		public void run(){
 			while(true){
-				for (int i = 0; i < tempPlayers.size(); i++) {
+				int i = 0;
+				boolean keepGoing = true;
+				while(i < tempPlayers.size() && keepGoing)
 					try {
 						Thread.sleep(300);
 					} catch (InterruptedException e) {
@@ -63,17 +66,23 @@ public class Lobby {
 						if (this.checkPlayerSignOn(tempPlayers.elementAt(i).getUser()) == true) {
 							logger.writeToLog("User " + tempPlayers.elementAt(i).getUser().getUsername() + " passed signon check");
 							Lobby.addPlayer(tempPlayers.remove(i));
-							break;
+							keepGoing = false;
+							tempPlayers.elementAt(i).sendActionRequest(new ActionRequest(ActionRequest.SC_LOGIN_SUCCESS));
 						} else {
 							logger.writeToLog("User " + tempPlayers.elementAt(i).getUser().getUsername() + " did not pass signon check");
+							keepGoing = false;
+							tempPlayers.elementAt(i).sendActionRequest(new ActionRequest(ActionRequest.SC_LOGIN_FAILURE));
 							//TODO kill the player
 						}
 					} else {
 						logger.writeToLog(tempPlayers.elementAt(i) + "Has failed to provide a user " + tempPlayers.elementAt(i).incrementFailedChecks() + "times");
 						if (tempPlayers.elementAt(i).getNumFailedUserChecks() > MAX_ATTEMPS) {
+							keepGoing = false;
+							tempPlayers.elementAt(i).sendActionRequest(new ActionRequest(ActionRequest.SC_LOGIN_FAILURE));
 							//TODO kill the player
 						}
 					}
+					i++;
 				}
 			}
 		}
