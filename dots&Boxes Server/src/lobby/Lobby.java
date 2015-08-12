@@ -44,6 +44,7 @@ public class Lobby extends Thread{
 
 	public static void addTempPlayer(Player player) {
 		tempPlayers.addElement(player);
+		player.start();
 	}
 
 	class tempPlayerManager extends Thread {
@@ -58,9 +59,10 @@ public class Lobby extends Thread{
 			while(true){
 				int i = 0;
 				boolean keepGoing = true;
+								
 				while(i < tempPlayers.size() && keepGoing){
 					for (int j = 0; j < tempPlayers.size(); j++) {
-						logger.writeToLog((tempPlayers.elementAt(i).toString()));
+						logger.writeToLog((tempPlayers.elementAt(j).toString()));
 					}
 					try {
 						Thread.sleep(300);
