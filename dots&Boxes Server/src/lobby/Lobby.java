@@ -34,6 +34,7 @@ public class Lobby extends Thread{
 	}
 
 	public static void addPlayer(Player player) {
+		logger.writeToLog("added player: " + player.getUser().getUsername());
 		player.getUser().wipeCreds();
 		players.addElement(player);
 		userNames.add(player.getUser());
@@ -58,6 +59,9 @@ public class Lobby extends Thread{
 				int i = 0;
 				boolean keepGoing = true;
 				while(i < tempPlayers.size() && keepGoing){
+					for (int j = 0; j < tempPlayers.size(); j++) {
+						logger.writeToLog((tempPlayers.elementAt(i).toString()));
+					}
 					try {
 						Thread.sleep(300);
 					} catch (InterruptedException e) {
