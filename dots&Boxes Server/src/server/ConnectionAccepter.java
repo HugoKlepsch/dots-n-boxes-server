@@ -20,7 +20,7 @@ import lobby.Player;
  *
  */
 public class ConnectionAccepter{
-	public static final int port = 7075;
+	public static final int port = 7070;
 	
 	
 	
