@@ -1,0 +1,21 @@
+20150812_144823 --- Thread[Thread-3,5,main]
+20150812_144823 --- Received cs_connect from Graham
+20150812_144824 --- User Graham passed signon check
+20150812_144824 --- added player: Graham
+20150812_144824 --- Received cs_connect from Graham
+20150812_144824 --- Sent user list
+20150812_144825 --- removed connection number: 0
+20150812_144827 --- Thread[Thread-4,5,main]
+20150812_144827 --- Received cs_connect from hugoEMu
+20150812_144827 --- User hugoEMu passed signon check
+20150812_144827 --- added player: hugoEMu
+20150812_144827 --- Sent user list
+20150812_144827 --- Received cs_connect from hugoEMu
+20150812_144828 --- removed connection number: 0
+20150812_144834 --- Thread[Thread-5,5,main]
+20150812_144834 --- Received cs_connect from hugo
+20150812_144834 --- User hugo passed signon check
+20150812_144834 --- added player: hugo
+20150812_144834 --- Sent user list
+20150812_144834 --- Received cs_connect from hugo
+20150812_144834 --- removed connection number: 0

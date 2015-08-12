@@ -52,7 +52,7 @@ public class Player extends Thread {
 						this.setUser(actionRequest.getUser());
 						break;
 					case ActionRequest.CS_USERLIST:
-						Lobby.logger.writeToLog("Received cs_userlist from " + actionRequest.getUser().getUsername());
+						Lobby.logger.writeToLog("Received cs_userlist from " + this.getUser().getUsername());
 						this.sendUserList();
 						break;
 					case ActionRequest.CS_CHALLENGE_PLAYER:
