@@ -33,6 +33,7 @@ public class Player extends Thread {
 	private int numFailedUserChecks; //incremented when the tempplayerchecker checks the player, and hasSetUser is false;
 	
 	public Player(Socket socket){
+		this.socket = socket;
 		StayAlive = true;
 		
 	}
