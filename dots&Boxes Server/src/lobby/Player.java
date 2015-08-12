@@ -48,11 +48,11 @@ public class Player extends Thread {
 				
 				switch (actionRequest.getAction()){
 					case ActionRequest.CS_CONNECT:
-						System.out.println("Received cs_connect");
+						Lobby.logger.writeToLog("Received cs_connect from " + actionRequest.getUser().getUsername());
 						this.setUser(actionRequest.getUser());
 						break;
 					case ActionRequest.CS_USERLIST:
-						System.out.println("Received cs_userlist");
+						Lobby.logger.writeToLog("Received cs_userlist from " + actionRequest.getUser().getUsername());
 						this.sendUserList();
 						break;
 					case ActionRequest.CS_CHALLENGE_PLAYER:
@@ -74,7 +74,6 @@ public class Player extends Thread {
 		try {
 			scStream.writeObject(actionRequest);
 			scStream.flush();
-			System.out.println("sent an action request");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,7 +84,7 @@ public class Player extends Thread {
 	
 	public void sendUserList(){
 		this.sendActionRequest(new ActionRequest(ActionRequest.SC_USERLIST, Lobby.userNames));
-		System.out.println("Sent user list");
+		Lobby.logger.writeToLog("Sent user list");
 	}
 	
 	public void challengePlayer(String username){
