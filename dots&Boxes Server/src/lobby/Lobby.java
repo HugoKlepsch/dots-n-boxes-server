@@ -26,7 +26,7 @@ public class Lobby extends Thread{
 
 	public void run() {
 		logger = new Logging("dots_n_boxes_log.txt", true);
-		
+		new tempPlayerManager().start();
 
 	}
 	public Lobby(){
