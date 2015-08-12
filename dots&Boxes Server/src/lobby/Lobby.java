@@ -74,9 +74,9 @@ public class Lobby extends Thread{
 					if (tempPlayers.elementAt(i).hasSetUser()) {
 						if (this.checkPlayerSignOn(tempPlayers.elementAt(i).getUser()) == true) {
 							logger.writeToLog("User " + tempPlayers.elementAt(i).getUser().getUsername() + " passed signon check");
+							tempPlayers.elementAt(i).sendActionRequest(new ActionRequest(ActionRequest.SC_LOGIN_SUCCESS));
 							Lobby.addPlayer(tempPlayers.remove(i));
 							keepGoing = false;
-							tempPlayers.elementAt(i).sendActionRequest(new ActionRequest(ActionRequest.SC_LOGIN_SUCCESS));
 						} else {
 							logger.writeToLog("User " + tempPlayers.elementAt(i).getUser().getUsername() + " did not pass signon check");
 							keepGoing = false;
