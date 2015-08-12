@@ -53,6 +53,7 @@ public class Logging {
 		if (printToStdOutAswell) {
 			System.out.println(timeStamp + " --- " + message);
 		}
+		fileOut.flush();
 	}
 	
 }
