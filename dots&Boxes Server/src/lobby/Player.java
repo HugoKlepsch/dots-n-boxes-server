@@ -52,10 +52,11 @@ public class Player extends Thread {
 						this.setUser(actionRequest.getUser());
 						break;
 					case ActionRequest.CS_USERLIST:
-						Lobby.logger.writeToLog("Received cs_userlist from " + this.getUser().getUsername());
+//						Lobby.logger.writeToLog("Received cs_userlist from " + this.getUser().getUsername());
 						this.sendUserList();
 						break;
 					case ActionRequest.CS_CHALLENGE_PLAYER:
+						Lobby.logger.writeToLog(this.getUser().getUsername() + " has challenged " + actionRequest.getUser().getUsername());
 						this.challengePlayer(actionRequest.getUser().getUsername());
 						break;
 				}
@@ -84,7 +85,6 @@ public class Player extends Thread {
 	
 	public void sendUserList(){
 		this.sendActionRequest(new ActionRequest(ActionRequest.SC_USERLIST, Lobby.userNames));
-		Lobby.logger.writeToLog("Sent user list");
 	}
 	
 	public void challengePlayer(String username){
